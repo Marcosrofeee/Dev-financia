@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+ <html lang="pt-BR">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Dev Finance</title>
+         <link rel="stylesheet" href="./style.css">
+     </head>
+     <body>
+     <!--Cabeçalho-->
+         <header class="header">
+             <div class="container header-content">
+                 <a href="#" class="logo">
+                     Dev Finance
+                 </a>
+             <!--Botão de nova transação-->    
+                 <button class="btn-new-transaction">
+                     + Nova transação
+                 </button>
+             </div>
+            </header>
+     <!--Cabeçalho--> 
+     
+     <!--Conteúdo principal-->  
+         <main class="container" >
+             <section class="dashboard">
+                 <div class="card balance">
+                     <span>Saldo total</span>
+                     <strong>R$ 0,00</strong>
+                 </div>
+                 
+                 <div class="card income">
+                     <span>Entradas</span>
+                     <strong>R$ 0,00</strong>
+                 </div>
+                 
+                 <div class="card expense">
+                     <span>Saídas</span>
+                     <strong>R$ 0,00</strong>
+                 </div>  
+             </section>
+
+             <section class="transaction-section">
+                 <div class="section-header">
+                     <h1>Transações</h1>
+                         <select id="category-filter">
+                             <opition value="all">Todas as categorias</option>
+                             <opition value="income">Entradas</option>
+                             <opition value="expense">Saídas</option>    
+                         </select>
+                 </div>
+                 
+                 <div class="transactions-list">
+                     <div class="empty-state">
+                         <p>Nenhuma transação cadastrada.</p>
+                         <span>Adicione sua primeira transação</span>
+                     </div>
+                 </div>
+             </section>
+
+             <section class="chart-section">
+                 <div class="section-header">
+                     <h2>Gastos por categoria</h2>
+                 </div> 
+
+                 <div class="chart-container">
+                     <canvas id="expense-chart"></canvas>
+                 </div>
+             </section>
+         </main>
+     <!--Conteúdo principal -->
+     <!--Modal de transação-->    
+         <div class="modal">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h2>Nova transação</h2>
+                     <button class="btn-close">
+                        x
+                     </button>
+                 </div>
+                 <form id="transaction-form">
+                     <div class="form-group">
+                         <label for="description">
+                             Descrição
+                         </label>
+                         <input type="text" 
+                             id="description" 
+                                 placeholder="Ex: Mercado"
+                                      required
+                        >
+                     </div>
+                     
+                     <div class="form-group">
+                         <label for="amount">
+                             Valor   
+                         </label>
+                         <input type="number"
+                             id="amount" 
+                                 placeholder="0,00"
+                                     step="0.01"
+                                         required
+                         >
+                     </div>
+
+                     <div class="form-group">
+                         <label for="category">
+                             Categoria
+                         </label>
+                         <select id="category" required>
+                             <option value="">
+                                 Selecione uma categoria
+                             </option>
+                             <option value="alimentação">
+                                 Alimentação
+                             </option>
+                             <option value="transporte">
+                                 Transporte
+                             </option>
+                             <option value="moradia">
+                                 Moradia
+                             </option>
+                             <option value="lazer">
+                                 Lazer
+                             </option>
+                             <option value="salario">
+                                 Salário
+                             </option>
+                             <option value="outros">
+                                 Outros
+                             </option>
+                         </select>          
+                     </div>
+                     <div class="form-goup">
+                         <label>
+                             Tipo
+                         </label>
+                         <div class="transaction-type">
+                             <label>
+                                 <input type="radio"
+                                     name="type"
+                                         value="income"
+                                             checked
+                                 >
+                                 Entrada
+                             </label>
+
+                             <label>
+                                 <input type="radio"
+                                      name="type"
+                                         value="expense"
+                                 >
+                                 Saída
+                             </label>                
+                         </div>
+                     </div>
+                     <button
+                         type="submit"
+                             class="btn-save"
+                     >
+                         Adicionar transação
+                     </button>
+                 </form>
+             </div>
+         </div>
+     <!--Modal de transação-->   
+     <script src="js./script.js"></script>
+     </body>
+</html>
