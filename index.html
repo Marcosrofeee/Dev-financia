@@ -7,16 +7,27 @@
          <link rel="stylesheet" href="./style.css">
      </head>
      <body>
+         <div class="toast" id="toast"></div> 
      <!--Cabeçalho-->
          <header class="header">
              <div class="container header-content">
                  <a href="#" class="logo">
                      Dev Finance
                  </a>
-             <!--Botão de nova transação-->    
-                 <button class="btn-new-transaction">
+                 
+                 <button
+                     id="theme-toggle"
+                         class="theme-toggle"
+                             type="button"
+                         aria-label="Ativar modo escuro">
+                         🌙
+                 </button>
+             
+                    
+                 <button class="btn-new-transaction" id="btn-new-transaction">
                      + Nova transação
                  </button>
+                
              </div>
             </header>
      <!--Cabeçalho--> 
@@ -43,11 +54,43 @@
              <section class="transaction-section">
                  <div class="section-header">
                      <h1>Transações</h1>
+                     <div class="transaction-filters">
+                         <input
+                             type="search"
+                                 id="search-input"
+                                     placeholder="🔎 Buscar transação..."
+                         >   
                          <select id="category-filter">
-                             <opition value="all">Todas as categorias</option>
-                             <opition value="income">Entradas</option>
-                             <opition value="expense">Saídas</option>    
-                         </select>
+                             <option value="all">
+                                 Todas as categorias
+                             </option>
+
+                             <option value="alimentação">
+                                 Alimentação
+                             </option>
+
+                             <option value="transporte">
+                                 Transporte
+                             </option>
+
+                             <option value="moradia">
+                                 Moradia
+                             </option>
+
+                             <option value="lazer">
+                                    Lazer
+                             </option>
+
+                             <option value="salario">
+                                    Salário
+                             </option>
+
+                             <option value="outros">
+                                 Outros
+                             </option>
+                         </select>         
+
+                     </div> 
                  </div>
                  
                  <div class="transactions-list">
@@ -74,7 +117,7 @@
              <div class="modal-content">
                  <div class="modal-header">
                      <h2>Nova transação</h2>
-                     <button class="btn-close">
+                     <button class="btn-close" type="button">
                         x
                      </button>
                  </div>
@@ -88,6 +131,7 @@
                                  placeholder="Ex: Mercado"
                                       required
                         >
+                         <small class="error-message" id="description-error"></small>
                      </div>
                      
                      <div class="form-group">
@@ -100,8 +144,19 @@
                                      step="0.01"
                                          required
                          >
+                          <small class="error-message" id="amount-error"></small>
                      </div>
-
+                     
+                     <div class="form-group">
+                         <label for="date">Data</label>
+                         <input
+                             type="date"
+                                 id="date"
+                                     required
+                         >
+                         <small class="error-message" id="date-error"></small>
+                       </div>
+                         
                      <div class="form-group">
                          <label for="category">
                              Categoria
@@ -128,8 +183,10 @@
                              <option value="outros">
                                  Outros
                              </option>
-                         </select>          
+                         </select>    
+                             <small class="error-message" id="category-error"></small>      
                      </div>
+                  
                      <div class="form-goup">
                          <label>
                              Tipo
@@ -163,6 +220,39 @@
              </div>
          </div>
      <!--Modal de transação-->   
-     <script src="js./script.js"></script>
+     <div class="delete-modal" id="delete-modal">
+         <div class="delete-modal-content">
+             <div class="delete-modal-header">
+                 <h2>Excluir transação</h2>
+                  <button
+                     type="button"
+                          class="delete-modal-close"
+                             id="delete-modal-close">
+                             x
+                 </button>
+             </div>
+             <p>
+                 Tem certeza que deseja excluir esta transação?
+             </p>
+                 <div class="delete-modal-actions">
+                     <button 
+                         type="button"
+                             class="btn-cancel-delete"
+                                 id="cancel-delete">
+                                 Cancelar
+                     </button>   
+                     <button 
+                         type="button"
+                             class="btn-confirm-delete"
+                                 id="confirm-delete">
+                                 Excluir
+                     </button>  
+                 </div>      
+         </div>
+     </div> 
+
+
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+         <script src="js/script.js"></script>
      </body>
 </html>
